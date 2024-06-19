@@ -2,8 +2,8 @@
 /dist
 /node_modules
 /build
-/data/pg
-docker-compose.yml
+data/
+.docker-compose.yml
 
 # Logs
 logs
