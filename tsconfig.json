@@ -21,6 +21,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      ".prisma/*": [
+        "./node_modules/.prisma/*"
       ]
     },
     "types": [
