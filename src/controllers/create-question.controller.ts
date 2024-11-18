@@ -28,9 +28,19 @@ export class CreateQuestionController {
     const { title, content } = body
     const userId = user.sub
 
-    console.log('User ID:', userId); // Verifica o valor do userId
+    // Verifique o valor de userId
+    console.log('User ID:', userId);
+
 
     const slug = this.convertToSlug(title)
+
+    console.log('Data being sent to Prisma:', {
+      authorId: userId,
+      title,
+      content,
+      slug
+    })
+
 
     await this.prisma.question.create({
       data: {

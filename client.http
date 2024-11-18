@@ -7,8 +7,8 @@ POST {{baseUrl}}/accounts
 Content-Type: application/json
 
 {
-  "name": "Leonardo Lamoia Rosa",
-  "email": "leonardo@gmail.com",
+  "name": "Leonardo bom demais",
+  "email": "leonardos@gmail.com.br",
   "password": "123456"
 }
 
@@ -20,7 +20,7 @@ POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
-  "email": "leonardo3@gmail.com",
+  "email": "leonardos@gmail.com.br",
   "password": "123456"
 }
 ###
@@ -31,8 +31,8 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "simbora garaio",
-  "content": "Conteúdo da pergunta"
+  "title": "New question221",
+  "content": "Question content212"
 
 }
 
