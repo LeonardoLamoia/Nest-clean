@@ -1,45 +1,40 @@
-import { AppModule } from "@/app.module";
-import { PrismaService } from "@/prisma/prisma.service";
-import { INestApplication } from "@nestjs/common";
-import { Test } from '@nestjs/testing';
-import request from 'supertest'; 
+import { AppModule } from '@/app.module'
+import { PrismaService } from '@/prisma/prisma.service'
+import { INestApplication } from '@nestjs/common'
+import { Test } from '@nestjs/testing'
+import request from 'supertest'
 
-
-describe('Create account (E2E)', () => {
-  let app: INestApplication;
+describe('Create Account (E2E)', () => {
+  let app: INestApplication
   let prisma: PrismaService
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule],
-    }).compile();
+    }).compile()
 
-    app = moduleRef.createNestApplication();
+    app = moduleRef.createNestApplication()
 
     prisma = moduleRef.get(PrismaService)
-    await app.init();
-  });
 
-  afterAll(async () => {
-    await app.close();
-  });
+    await app.init()
+  })
 
   test('[POST] /accounts', async () => {
     const response = await request(app.getHttpServer()).post('/accounts').send({
-      name: 'Rei Davi',
-      email: 'reidavi@example.com',
-      password: '123456'
-    });
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '123456',
+    })
 
-
-    expect(response.status).toBe(201);
+    expect(response.statusCode).toBe(201)
 
     const userOnDatabase = await prisma.user.findUnique({
       where: {
-        email: 'reidavi@example.com'
-      }
+        email: 'johndoe@example.com',
+      },
     })
 
     expect(userOnDatabase).toBeTruthy()
-  });
-});
+  })
+})
